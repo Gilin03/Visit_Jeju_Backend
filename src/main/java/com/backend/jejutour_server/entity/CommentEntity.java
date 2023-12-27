@@ -26,6 +26,11 @@ public class CommentEntity {
     @JoinColumn(name = "user_firebase_uid", referencedColumnName = "firebase_uid") // 수정된 부분
     private UserEntity user;
 
+    @Column(name = "item_type", length = 255)
+    private String itemType;
+
+    @Column(name = "item_id")
+    private Long itemId;
 
     // 기타 필요한 메서드나 필드
 }

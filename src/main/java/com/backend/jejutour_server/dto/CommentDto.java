@@ -10,5 +10,6 @@ public class CommentDto {
     private Long id;
     private String comment;
     private String userId;
-
+    private String itemType;
+    private Long itemId;
 }
