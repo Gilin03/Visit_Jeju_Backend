@@ -9,5 +9,6 @@ public class CommentDto {
 
     private Long id;
     private String comment;
+    private String userId;
 
 }

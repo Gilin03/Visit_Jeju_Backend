@@ -23,12 +23,24 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
+    @Autowired
+    private UserService userService; // UserService 주입
+
     @PostMapping("/save")
-    public ResponseEntity<CommentEntity> saveComment(@RequestBody CommentDto commentdto) {
+    public ResponseEntity<CommentEntity> saveComment(@RequestBody CommentDto commentDto) {
+        // Firebase 사용자 ID를 사용하여 사용자 조회
+        UserEntity user = userService.findUserByFirebaseUid(commentDto.getUserId());
+        if (user == null) {
+            // 사용자가 존재하지 않는 경우 오류 응답
+            return ResponseEntity.badRequest().build();
+        }
+
         CommentEntity comment = new CommentEntity();
-        commentdto.setComment(commentdto.getComment());
+        comment.setComment(commentDto.getComment());
+        comment.setUser(user);
 
         CommentEntity savedComment = commentService.saveComment(comment);
         return ResponseEntity.ok(savedComment);
     }
+
 }

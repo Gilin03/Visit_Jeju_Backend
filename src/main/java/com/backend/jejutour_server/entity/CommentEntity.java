@@ -22,6 +22,10 @@ public class CommentEntity {
     @Column(name = "comment", length = 255)
     private String comment;
 
+    @ManyToOne
+    @JoinColumn(name = "user_firebase_uid", referencedColumnName = "firebase_uid") // 수정된 부분
+    private UserEntity user;
+
 
     // 기타 필요한 메서드나 필드
 }
