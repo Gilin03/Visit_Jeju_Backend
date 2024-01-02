@@ -39,6 +39,9 @@ public class CommentController {
         comment.setItemType(commentDto.getItemType());
         comment.setItemId(commentDto.getItemId());
 
+        comment.setItemType(commentDto.getItemType());
+        comment.setItemId(commentDto.getItemId());
+
         CommentEntity savedComment = commentService.saveComment(comment);
         return ResponseEntity.ok(savedComment);
     }
