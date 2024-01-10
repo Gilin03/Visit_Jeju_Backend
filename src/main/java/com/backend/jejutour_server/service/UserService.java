@@ -20,4 +20,9 @@ public class UserService {
         return userRepository.findByFirebaseUid(firebaseUid).orElse(null);
     }
 
+    public UserEntity findUserById(Long userId) {
+        return userRepository.findById(userId).orElse(null);
+    }
+
+
 }
